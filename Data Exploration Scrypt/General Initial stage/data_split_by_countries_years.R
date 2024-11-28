@@ -15,7 +15,6 @@ rowData_all_awards$Recipient_Org_Country <- gsub(" ", "", tolower(rowData_all_aw
 rowData_all_awards$Award_Date <- as.Date(rowData_all_awards$Award_Date, format = "%Y-%m-%d")
 
 ######################################## Main 3 Groups ########################################################
-
 #UK Data
 rowData_unitedkingdom_awards <- rowData_all_awards %>% filter(Recipient_Org_Country %in% c("unitedkingdom", "england", "scotland", "northernireland", "wales"))
 
