@@ -4,9 +4,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def read_postcode_file(file_path):
-    #read CSV file and extract relevant columns (Postcode, District, County, Region, Ward)
+    #read CSV file and extract relevant columns (Postcode, District, County, Region, Ward, Country)
     df = pd.read_csv(file_path, encoding='utf-8-sig', low_memory=False)
-    df = df[['Postcode', 'District', 'County', 'Region', 'Ward']]  # Adjust columns if needed
+    df = df[['Postcode', 'District', 'County', 'Region', 'Ward', 'Country']]
     return df
 
 
@@ -19,7 +19,7 @@ def merge_grants_with_postcodes(grants_df, postcodes_df):
 
     #merge grants with the postcodes DataFrame on the postcode column
     merged_df = grants_df.merge(
-        postcodes_df[['Postcode', 'District', 'County', 'Region', 'Ward']],  #select relevant columns from postcodes
+        postcodes_df[['Postcode', 'District', 'County', 'Region', 'Ward', 'Country']],  #select relevant columns from postcodes
         left_on='Recipient Org:Postal Code',
         right_on='Postcode',
         how='left'
@@ -33,6 +33,7 @@ def merge_grants_with_postcodes(grants_df, postcodes_df):
     merged_df['County'] = merged_df['County'].fillna('Unknown')  #replace missing County with 'Unknown'
     merged_df['Region'] = merged_df['Region'].fillna('Unknown')  #replace missing Region with 'Unknown'
     merged_df['Ward'] = merged_df['Ward'].fillna('Unknown')  #replace missing Ward with 'Unknown'
+    merged_df['Country'] = merged_df['Country'].fillna('Unknown')
 
     #drop the extra "Postcode" column from postcodes.csv after merging
     merged_df.drop(columns=['Postcode'], inplace=True)
@@ -65,7 +66,7 @@ def main():
         merged_df = merge_grants_with_postcodes(grants_df, full_postcodes_df)
 
         #save the updated grants dataset
-        merged_df.to_csv("updated_grants_with_cities_district_county_region_ward.csv", index=False, encoding='utf-8')
+        merged_df.to_csv("updated_grants_with_cities_district_county_region_ward_country.csv", index=False, encoding='utf-8')
 
         #print summary of how many missing cities were filled
         missing_filled = merged_df['Recipient Org:City'].isna().sum()
