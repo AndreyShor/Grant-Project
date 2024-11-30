@@ -1,0 +1,6 @@
+Three files contains different types of map plots across years.
+
+Heads-up: the interactive maps (does not include interactive heatmaps) can be slow to load for 2029-2020, 2020-2021, 2021-2022, 2022-2023 because they contain around 200000 points. 
+Can potentially make your pc or laptop go boom! ------- just joking :)
+
+Another heads-up: the code included only contains the plotting part, does not include importing datasets. (data_1617 in the code refers to the imported dataset for year 2016-2017)
