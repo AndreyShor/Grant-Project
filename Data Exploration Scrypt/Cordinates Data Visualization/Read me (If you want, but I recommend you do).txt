@@ -1,5 +1,7 @@
 Three files contains different types of map plots across years.
 
+To view the interactive maps clone the repository and open in your file explorer, or when you click on for example "data_2016-2017_heatmap.html" on GitHub page and it shows a bunch of codes at the top right there is a download bottom which will allow you to download raw file,  it will download the html file on your pc to view :)
+
 Heads-up: the interactive maps (does not include interactive heatmaps) can be slow to load for 2029-2020, 2020-2021, 2021-2022, 2022-2023 because they contain around 200000 points. 
 Can potentially make your pc or laptop go boom! ------- just joking :)
 
