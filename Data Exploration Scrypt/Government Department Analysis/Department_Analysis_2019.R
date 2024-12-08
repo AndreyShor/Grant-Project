@@ -1,9 +1,10 @@
 #government department analysis
-#read the data to R
+
 raw_data <- read.csv("/Users/sandychen/Desktop/Lancaster/SCC460 DS Fundamental/project/Grant-Project/Data/Awards_data_frame.csv")
 
 # Load dplyr package
 library(dplyr)
+
 
 # Select columns by name
 new_data <- raw_data %>%
@@ -62,7 +63,7 @@ grant_by_department_2019 <- grant_by_department_2019 %>%
   mutate(Percentage = Total_Grant / sum(Total_Grant) * 100)
 
 # Create a pie chart with percentages inside the segments
-ggplot(grant_by_department_2019, aes(x = "", y = Percentage, fill = Funding_Org_Name)) +
+ggplot(grant_by_department_2019, aes(x = "", y = Percentage, fill = Funding Org:Name)) +
   geom_bar(stat = "identity", width = 1) +  # Create the bar chart
   coord_polar(theta = "y") +  # Convert it to a pie chart
   theme_void() +  # Remove the background and axes

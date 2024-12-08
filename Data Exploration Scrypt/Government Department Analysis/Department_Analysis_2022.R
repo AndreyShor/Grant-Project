@@ -1,5 +1,4 @@
 #government department analysis
-#read the data to R
 raw_data <- read.csv("/Users/sandychen/Desktop/Lancaster/SCC460 DS Fundamental/project/Grant-Project/Data/Awards_data_frame.csv")
 
 # Load dplyr package

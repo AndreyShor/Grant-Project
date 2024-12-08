@@ -1,9 +1,23 @@
 #government department analysis
-#read the data to R
-raw_data <- read.csv("/Users/sandychen/Desktop/Lancaster/SCC460 DS Fundamental/project/Grant-Project/Data/Awards_data_frame.csv")
-
 # Load dplyr package
 library(dplyr)
+
+# read the CSV file
+raw_data <- read.csv("/Users/sandychen/Desktop/no_duplicates.csv")
+
+# clean up column names (remove any leading/trailing spaces)
+colnames(raw_data) <- trimws(colnames(raw_data))
+
+# verify the column names to ensure they are cleaned up
+print(colnames(raw_data))
+
+# rename columns using dplyr::rename()
+raw_data <- raw_data %>%
+  rename(
+    Award_Date = `Award.Date`,
+    Funding_Org_Name = `Funding.Org.Name`,
+    Amount_Awarded = `Amount.Awarded`
+  )
 
 # Select columns by name
 new_data <- raw_data %>%
