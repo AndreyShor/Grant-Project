@@ -25,10 +25,42 @@ split_large_string <- function(big_string, max_length) {
 
 
 # Read Data
-rowData_all_awards <- read.csv(file = "./Data/Awards_data_frame.csv")
+rowData_all_awards <- read.csv(file = "./Data/no_duplicates.csv")
+
+colnames(rowData_all_awards) <- c("Identifier", 
+                        "Title", 
+                        "Description", 
+                        "Currency", 
+                        "Amount_Awarded", 
+                        "Grant_Programme_Code", 
+                        "Grant_Programme_Title", 
+                        "Award_Date", 
+                        "Recipient_Org_Identifier", 
+                        "Recipient_Org_Name", 
+                        "Recipient_Org_Charity_Number", 
+                        "Recipient_Org_Company_Number", 
+                        "Recipient_Org_Street_Address", 
+                        "Recipient_Org_City", 
+                        "Recipient_Org_Country", 
+                        "Recipient_Org_Postal_Code", 
+                        "Funding_Org_Identifier", 
+                        "Funding_Org_Name", 
+                        "Managed_by_Organisation_Name", 
+                        "Allocation_Method", 
+                        "From_an_Open_Call", 
+                        "Award_Authority_Act_Name", 
+                        "Last_Modified", 
+                        "Award_Type", 
+                        "Number_of_Recipients", 
+                        "District", 
+                        "County", 
+                        "Region", 
+                        "Ward", 
+                        "Country", 
+                        "Population")
 
 # Combine all descriptions into a single string
-all_text <- paste(rowData_all_awards$Grant_Programme_Title, collapse = " ")
+all_text <- paste(rowData_all_awards$Description, collapse = " ")
 
 # Clean the text: convert to lowercase and remove punctuation
 all_text_clean <- gsub("[[:punct:]]", "", tolower(all_text))
@@ -126,9 +158,11 @@ colnames(word_frequency) <- c("Word", "Occurrence")
 word_frequency <- word_frequency[order(word_frequency$Occurrence, decreasing = TRUE), ]
 word_frequency
 
-word_frequency <- word_frequency %>% filter(Occurrence > 15)
+word_frequency <- word_frequency %>% filter(Occurrence > 25)
 total_words <- nrow(word_frequency)
 total_words
+
+options(future.globals.maxSize = 1024 * 1024 * 1024)  # 1 GiB
 
 tic("Total processing time for calculating word value")
 
@@ -172,7 +206,7 @@ word_frequency[1:50, ] %>%
   scale_fill_viridis_c(option = "plasma") +
   theme_minimal() +
   theme(legend.position = "none") +
-  labs(title = "Word Value of the first 50 words",
+  labs(title = "Value per Word of the first 50 words",
        x = "Word",
        y = "Word Value")
 
@@ -183,7 +217,7 @@ word_frequency[50:100, ] %>%
   scale_fill_viridis_c(option = "plasma") +
   theme_minimal() +
   theme(legend.position = "none") +
-  labs(title = "Word Value of 50 - 100 words",
+  labs(title = "Value per Word of the first 50 words",
        x = "Word",
        y = "Word Value")
 
