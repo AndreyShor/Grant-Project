@@ -1,9 +1,43 @@
 #government department analysis
 
-raw_data <- read.csv("/Users/sandychen/Desktop/Lancaster/SCC460 DS Fundamental/project/Grant-Project/Data/Awards_data_frame.csv")
+raw_data <- read.csv("/Users/sandychen/Desktop/no_duplicates.csv")
 
 # Load dplyr package
 library(dplyr)
+
+# Rename columns with standardized names
+colnames(raw_data) <- c("Identifier", 
+                        "Title", 
+                        "Description", 
+                        "Currency", 
+                        "Amount_Awarded", 
+                        "Grant_Programme_Code", 
+                        "Grant_Programme_Title", 
+                        "Award_Date", 
+                        "Recipient_Org_Identifier", 
+                        "Recipient_Org_Name", 
+                        "Recipient_Org_Charity_Number", 
+                        "Recipient_Org_Company_Number", 
+                        "Recipient_Org_Street_Address", 
+                        "Recipient_Org_City", 
+                        "Recipient_Org_Country", 
+                        "Recipient_Org_Postal_Code", 
+                        "Funding_Org_Identifier", 
+                        "Funding_Org_Name", 
+                        "Managed_by_Organisation_Name", 
+                        "Allocation_Method", 
+                        "From_an_Open_Call", 
+                        "Award_Authority_Act_Name", 
+                        "Last_Modified", 
+                        "Award_Type", 
+                        "Number_of_Recipients", 
+                        "District", 
+                        "County", 
+                        "Region", 
+                        "Ward", 
+                        "Country", 
+                        "Population")
+
 
 
 # Select columns by name
@@ -24,6 +58,7 @@ filtered_data <- sorted_data %>%
 # Filter data for rows in the year 2019
 data_2019 <- filtered_data %>%
   filter(format(Award_Date, "%Y") == "2019")
+
 # Count the number of rows (records) for each department
 department_count_2019 <- data_2019 %>%
   group_by(Funding_Org_Name) %>%
@@ -63,7 +98,7 @@ grant_by_department_2019 <- grant_by_department_2019 %>%
   mutate(Percentage = Total_Grant / sum(Total_Grant) * 100)
 
 # Create a pie chart with percentages inside the segments
-ggplot(grant_by_department_2019, aes(x = "", y = Percentage, fill = Funding Org:Name)) +
+ggplot(grant_by_department_2019, aes(x = "", y = Percentage, fill = Funding_Org_Name)) +
   geom_bar(stat = "identity", width = 1) +  # Create the bar chart
   coord_polar(theta = "y") +  # Convert it to a pie chart
   theme_void() +  # Remove the background and axes
