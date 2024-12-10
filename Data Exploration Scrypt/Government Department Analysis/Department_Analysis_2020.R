@@ -1,8 +1,41 @@
 #government department analysis
-raw_data <- read.csv("/Users/sandychen/Desktop/Lancaster/SCC460 DS Fundamental/project/Grant-Project/Data/Awards_data_frame.csv")
+raw_data <- read.csv("/Users/sandychen/Desktop/no_duplicates.csv")
 
 # Load dplyr package
 library(dplyr)
+
+# Rename columns with standardized names
+colnames(raw_data) <- c("Identifier", 
+                        "Title", 
+                        "Description", 
+                        "Currency", 
+                        "Amount_Awarded", 
+                        "Grant_Programme_Code", 
+                        "Grant_Programme_Title", 
+                        "Award_Date", 
+                        "Recipient_Org_Identifier", 
+                        "Recipient_Org_Name", 
+                        "Recipient_Org_Charity_Number", 
+                        "Recipient_Org_Company_Number", 
+                        "Recipient_Org_Street_Address", 
+                        "Recipient_Org_City", 
+                        "Recipient_Org_Country", 
+                        "Recipient_Org_Postal_Code", 
+                        "Funding_Org_Identifier", 
+                        "Funding_Org_Name", 
+                        "Managed_by_Organisation_Name", 
+                        "Allocation_Method", 
+                        "From_an_Open_Call", 
+                        "Award_Authority_Act_Name", 
+                        "Last_Modified", 
+                        "Award_Type", 
+                        "Number_of_Recipients", 
+                        "District", 
+                        "County", 
+                        "Region", 
+                        "Ward", 
+                        "Country", 
+                        "Population")
 
 # Select columns by name
 new_data <- raw_data %>%
