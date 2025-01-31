@@ -540,7 +540,7 @@ top_5_orgs <- raw_data %>%
   pull(Funding_Org_Name)
 
 # Ensure that all 5 top organizations are included in 2023 (even if no awards were given)
-top_5_data_bar <- expand.grid(Funding_Org_Name = top_5_orgs, Year = 2023) %>%
+top_5_data_bar <- expand.grid(Funding_Org_Name = top_5_orgs, Year = 2019:2023) %>%
   left_join(raw_data, by = c("Funding_Org_Name", "Year")) %>%
   mutate(Total_Awarded = ifelse(is.na(Amount_Awarded), 0, Amount_Awarded)) %>%
   group_by(Funding_Org_Name, Year) %>%
@@ -555,7 +555,7 @@ top_5_data_bar <- top_5_data_bar %>%
   mutate(Year = as.integer(Year),
          Total_Awarded = as.numeric(Total_Awarded))
 
-# Now let's create the animated bar chart
+# create the animated bar chart
 p <- ggplot(top_5_data_bar, aes(x = Total_Awarded, y = fct_reorder(Funding_Org_Name, Total_Awarded), 
                                 fill = Funding_Org_Name)) +
   geom_col() +
@@ -578,4 +578,6 @@ p <- ggplot(top_5_data_bar, aes(x = Total_Awarded, y = fct_reorder(Funding_Org_N
   ease_aes('linear')
 
 # Print the animation
+unique(top_5_data_bar$Year)  # Should return 2019, 2020, 2021, 2022, 2023
+
 animate(p, nframes = 5, duration = 5, width = 800, height = 600, renderer = gifski_renderer())
