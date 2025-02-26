@@ -1,30 +1,50 @@
 # Grant-Project
-University group project
+Understanding Government Grantmaking
 
+“Analyzing UK government grant data to uncover funding trends, departmental overlaps, and policy impacts
+using data-driven insights.”
 
-## Kanban Board – All Tasks (change on weekly basis)
-https://trello.com/b/xjP0Dlx7/grants-project
+## Credits
 
-## Box – shared workspace with files (E.g presentation, word documents), Add file once and share link to it
+This Project was created by:
+1. Andrejs Sorstkins
+2. ChingHsuan Chen
+3. Ryan Alghamdi
+4. Adam Missen
+5. Junxian Huang
 
-### Register:
-https://www.box.com/en-gb/home?url_redirect=www.google.com%2F
+## Intro 
 
-### Link to presentation:
-https://app.box.com/s/7i1sgptvgfi4bsj0xnhnsamkaqh52j6a
+Government grants are essential to advancing aspi-
+rations, supporting research and driving progress in
+various sectors . They can provide resources for
+companies to carry out projects or provide services
+that they may not be able to afford otherwise. As
+government grants do not have to be repaid, there is
+a lot of competition companies have to go through
+before actually receiving them. In November 2020 the
+UK government published data about all the grants
+they make in an effort to collect and standardize this
+information using the 360Giving data standard.
+The aim of this project is to analyse this data to
+answer questions about how the government decides
+where to give these grants. Insights from the data set
+will help understand grantmaking in the UK and how
+to improve it through three main research questions.
 
+1) How does UK government grantmaking vary by
+theme or topic? How have these topics changed
+over time?
+2) Do different government departments fund the
+same organisations?
+3) How well do grants reflect the priorities and aims
+of the government?
+4) Can we observe the impact of the COVID-19
+pandemic on government grant allocation?
+5) Can we observe the impact of the Energy Bill
+Support Scheme (EBSS) on government grant
+allocation ?
 
-## OneDrive – Common storage for all files.
-You should find folder in your OneDrive.
-
-### OneDrive Login: 
-https://onedrive.live.com/login/
-
-Name of the folder: “Projects Files - Grant Project”
-
-
-### GitHub
-Code Repository, all code is stored is here.
-https://github.com/AndreyShor/Grant-Project
+You can find full report about our finding in Report folder.
 
 
