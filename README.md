@@ -1,5 +1,4 @@
-# Grant-Project
-Understanding Government Grantmaking
+# Understanding Government Grantmaking
 
 “Analyzing UK government grant data to uncover funding trends, departmental overlaps, and policy impacts
 using data-driven insights.”
